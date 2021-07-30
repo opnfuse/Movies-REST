@@ -1,16 +1,11 @@
 import express from 'express';
 
 import config from './config/index.js';
+import moviesApi from './routes/movies.js';
 
 const app = express();
 
-app.get('/', function (req, res) {
-  res.send('hello world');
-});
-
-app.get('/json', function (req, res) {
-  res.json({ hello: 'world' });
-});
+moviesApi(app);
 
 app.listen(config.port, function () {
   console.log(`Listening http://localhost:${config.port}`);
