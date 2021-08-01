@@ -2,7 +2,12 @@
   "openapi": "3.0.3",
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://movies-rest-opnfuso.herokuapp.com",
+      "description": "Build server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local dev server"
     }
   ],
   "info": {
