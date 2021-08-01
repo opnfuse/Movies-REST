@@ -7,14 +7,14 @@ class MoviesService {
   }
 
   async getMovies(tags) {
-    const query = tags && { tags: { $in: tags } };
+    const query = tags && { tags: { $in: [tags] } };
     const movies = await this.mongoDB.getAll(this.collection, query);
     return movies || [];
   }
 
   async getMovie(movieId) {
     const movie = await this.mongoDB.get(this.collection, movieId);
-    return movie || {};
+    return movie;
   }
 
   async createMovie(movie) {

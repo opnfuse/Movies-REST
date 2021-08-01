@@ -2,6 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import slash from 'express-slash';
+import swaggerUi from 'swagger-ui-express';
 
 import config from './config/index.js';
 import moviesApi from './routes/movies.js';
@@ -11,6 +12,7 @@ import {
   wrapErrors,
 } from './utils/middlewares/errorHandlers.js';
 import notFoundHandler from './utils/middlewares/notFoundHandler.js';
+import swaggerDocument from './swagger.json';
 
 const app = express();
 
@@ -22,6 +24,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 moviesApi(app);
 app.use(slash());
 

@@ -1,0 +1,192 @@
+{
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "info": {
+    "title": "Movies REST",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/movies": {
+      "get": {
+        "summary": "List all movies",
+        "responses": {
+          "200": {
+            "description": "The list of all movies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Movie"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Movie": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "The auto-generated id of the movie"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 80,
+            "description": "The title of the movie"
+          },
+          "year": {
+            "type": "number",
+            "minimum": 1888,
+            "maximum": 2070,
+            "description": "The year of the movie"
+          },
+          "cover": {
+            "type": "string",
+            "format": "uri",
+            "description": "The url of the movie cover"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "The description of the movie"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 1440,
+            "description": "The duration of the movie in minutes"
+          },
+          "contentRating": {
+            "type": "string",
+            "description": "The content rating of the movie"
+          },
+          "tags": {
+            "type": "string",
+            "description": "the tags of the movie"
+          }
+        },
+        "example": {
+          "_id": "61058c3d2d56c2335824054f",
+          "title": "Viridiana",
+          "year": 1919,
+          "cover": "http://dummyimage.com/153x100.png/ff4444/ffffff",
+          "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+          "duration": 987,
+          "contentRating": "G",
+          "tags": "Comedy|Drama"
+        }
+      },
+      "CreateMovie": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 80,
+            "description": "The title of the movie"
+          },
+          "year": {
+            "type": "number",
+            "minimum": 1888,
+            "maximum": 2070,
+            "description": "The year of the movie"
+          },
+          "cover": {
+            "type": "string",
+            "format": "uri",
+            "description": "The url of the movie cover"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "The description of the movie"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 1440,
+            "description": "The duration of the movie in minutes"
+          },
+          "contentRating": {
+            "type": "string",
+            "description": "The content rating of the movie"
+          },
+          "tags": {
+            "type": "string",
+            "description": "the tags of the movie"
+          }
+        },
+        "required": [
+          "title",
+          "year",
+          "cover",
+          "description",
+          "duration",
+          "contentRating"
+        ],
+        "example": {
+          "title": "Viridiana",
+          "year": 1919,
+          "cover": "http://dummyimage.com/153x100.png/ff4444/ffffff",
+          "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+          "duration": 987,
+          "contentRating": "G",
+          "tags": "Comedy|Drama"
+        }
+      },
+      "UpdateMovie": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 80,
+            "description": "The title of the movie"
+          },
+          "year": {
+            "type": "number",
+            "minimum": 1888,
+            "maximum": 2070,
+            "description": "The year of the movie"
+          },
+          "cover": {
+            "type": "string",
+            "format": "uri",
+            "description": "The url of the movie cover"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "The description of the movie"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 1440,
+            "description": "The duration of the movie in minutes"
+          },
+          "contentRating": {
+            "type": "string",
+            "description": "The content rating of the movie"
+          },
+          "tags": {
+            "type": "string",
+            "description": "the tags of the movie"
+          }
+        },
+        "example": {
+          "title": "The best movie in the world"
+        }
+      }
+    }
+  }
+}

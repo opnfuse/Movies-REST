@@ -10,7 +10,7 @@ import {
 
 const moviesApi = (app) => {
   const router = express.Router();
-  app.use('/movies', router);
+  app.use('/api/movies', router);
 
   const moviesService = new MoviesService();
 
@@ -38,9 +38,15 @@ const moviesApi = (app) => {
       try {
         const movie = await moviesService.getMovie(movieId);
 
-        res.status(200).json({
-          data: movie,
-          message: 'movie retrieved',
+        if (movie) {
+          res.status(200).json({
+            data: movie,
+            message: 'movie retrieved',
+          });
+        }
+
+        res.status(404).json({
+          message: 'movie not found',
         });
       } catch (error) {
         next(error);
