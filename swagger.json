@@ -10,9 +10,10 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/api/movies": {
+    "/movies": {
       "get": {
         "summary": "List all movies",
+        "tags": ["Movies"],
         "responses": {
           "200": {
             "description": "The list of all movies",
@@ -24,6 +25,219 @@
                     "$ref": "#/components/schemas/Movie"
                   }
                 }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Post a new movie",
+        "tags": ["Movies"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMovie"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The id of the created movie",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "description": "The data of the request"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "The message of the request"
+                    }
+                  },
+                  "example": {
+                    "data": "6106c5de20b843a04063d8c8",
+                    "message": "movie created"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "text/plain": {
+                "example": "\"year\" must be a number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movies/{movieId}": {
+      "get": {
+        "summary": "Get the movie by id",
+        "tags": ["Movies"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieId",
+            "schema": {
+              "type": "string",
+              "example": "61058c3d2d56c2335824054f"
+            },
+            "required": true,
+            "description": "string id of the movie to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The movie of the id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Movie"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "movie retrieved"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad id",
+            "content": {
+              "text/plain": {
+                "example": "\"movieId\" with value \"61058c3d2d56c2335824054\" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "movie not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Modify the movie by id",
+        "tags": ["Movies"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMovie"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieId",
+            "schema": {
+              "type": "string",
+              "example": "61058c3d2d56c2335824054f"
+            },
+            "required": true,
+            "description": "string id of the movie to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The movie of the id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "61058c3d2d56c2335824054f"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "movie updated"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad id",
+            "content": {
+              "text/plain": {
+                "example": "\"movieId\" with value \"61058c3d2d56c2335824054\" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete the movie by id",
+        "tags": ["Movies"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieId",
+            "schema": {
+              "type": "string",
+              "example": "61058c3d2d56c2335824054f"
+            },
+            "required": true,
+            "description": "string id of the movie to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The movie of the id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": "61058c3d2d56c2335824054f"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "movie deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad id",
+            "content": {
+              "text/plain": {
+                "example": "\"movieId\" with value \"61058c3d2d56c2335824054\" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"
               }
             }
           }
@@ -188,5 +402,10 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Movies"
+    }
+  ]
 }

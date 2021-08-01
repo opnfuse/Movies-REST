@@ -24,16 +24,16 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 moviesApi(app);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(notFoundHandler);
 app.use(slash());
 
 // Catch 404
-app.use(notFoundHandler);
 
 // Errors middlewares
-app.use(logErrors);
 app.use(wrapErrors);
+app.use(logErrors);
 app.use(errorHandler);
 
 app.listen(config.port, function () {
