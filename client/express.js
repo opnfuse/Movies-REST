@@ -15,7 +15,7 @@ var htmlTplString = `
 <head>
   <meta charset="UTF-8">
   <title><% title %></title>
-  <link type="text/css" href="./swagger-ui.css" >
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
   <% favIconString %>
   <% customJs %>
   <style>
