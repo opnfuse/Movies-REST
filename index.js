@@ -1,4 +1,6 @@
 import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
 import slash from 'express-slash';
 import swaggerUi from 'swagger-ui-express';
 
@@ -13,6 +15,10 @@ import notFoundHandler from './utils/middlewares/notFoundHandler.js';
 import swaggerDocument from './swagger.json';
 
 const app = express();
+
+// Middlewares
+app.use(helmet());
+app.use(cors());
 
 // Body parser
 app.use(express.json());
