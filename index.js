@@ -27,9 +27,7 @@ app.use(express.json());
 moviesApi(app);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const router = express.Router();
-app.use(router);
-router.get('/', async (req, res, next) => {
+app.get('/', async (req, res, next) => {
   try {
     res.send('Welcome, go to /docs');
   } catch (error) {
