@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "movies-rest",
   "version": "1.0.0",
   "description": "Simple REST movie API",
