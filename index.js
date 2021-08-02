@@ -2,8 +2,8 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import slash from 'express-slash';
-import swaggerUi from 'swagger-ui-express';
 
+import swaggerUi from './client/express';
 import config from './config/index.js';
 import moviesApi from './routes/movies.js';
 import {
