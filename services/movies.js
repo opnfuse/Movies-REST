@@ -1,4 +1,4 @@
-import MongoLib from '../lib/mongo.js';
+const MongoLib = require('../lib/mongo.js');
 
 class MoviesService {
   constructor() {
@@ -37,4 +37,4 @@ class MoviesService {
   }
 }
 
-export default MoviesService;
+module.exports = MoviesService;

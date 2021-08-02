@@ -1,18 +1,18 @@
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-import slash from 'express-slash';
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const slash = require('express-slash');
+const swaggerUi = require('swagger-ui-express');
 
-import swaggerUi from './client/express';
-import config from './config/index.js';
-import moviesApi from './routes/movies.js';
-import {
+const config = require('./config/index.js');
+const moviesApi = require('./routes/movies.js');
+const {
   errorHandler,
   logErrors,
   wrapErrors,
-} from './utils/middlewares/errorHandlers.js';
-import notFoundHandler from './utils/middlewares/notFoundHandler.js';
-import swaggerDocument from './swagger.json';
+} = require('./utils/middlewares/errorHandlers.js');
+const notFoundHandler = require('./utils/middlewares/notFoundHandler.js');
+const swaggerDocument = require('./swagger.json');
 
 const app = express();
 

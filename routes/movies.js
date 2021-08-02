@@ -1,12 +1,12 @@
-import express from 'express';
+const express = require('express');
 
-import MoviesService from '../services/movies.js';
-import validationHandler from '../utils/middlewares/validationHandler.js';
-import {
+const MoviesService = require('../services/movies.js');
+const validationHandler = require('../utils/middlewares/validationHandler.js');
+const {
   movieIdSchema,
   createMovieSchema,
   updateMovieSchema,
-} from '../utils/schemas/movies.js';
+} = require('../utils/schemas/movies.js');
 
 const moviesApi = (app) => {
   const router = express.Router();
@@ -114,4 +114,4 @@ const moviesApi = (app) => {
   );
 };
 
-export default moviesApi;
+module.exports = moviesApi;

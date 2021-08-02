@@ -1,5 +1,5 @@
-import boom from '@hapi/boom';
-import joi from 'joi';
+const boom = require('@hapi/boom');
+const joi = require('joi');
 
 const validate = (data, schema) => {
   const { error } = joi.object(schema).validate(data);
@@ -14,4 +14,4 @@ const validationHandler = (schema, check = 'body') => {
   };
 };
 
-export default validationHandler;
+module.exports = validationHandler;
