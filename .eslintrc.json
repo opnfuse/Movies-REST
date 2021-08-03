@@ -4,7 +4,7 @@
   },
   "extends": ["eslint:recommended", "prettier"],
   "env": {
-    "es2021": true,
+    "2021": true,
     "node": true,
     "mocha": true
   },
